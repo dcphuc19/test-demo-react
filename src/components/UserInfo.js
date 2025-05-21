@@ -2,16 +2,10 @@ import React from "react";
 
 class UserInfo extends React.Component {
     state = {
-        name: 'me',
+        name: '',
         address: 'earth',
-        age: 26
+        age: ''
     };
-
-    handleClick(event) {
-        this.setState({
-            name: "ares"
-        })
-    }
 
     handleOnChangeInput(event) {
         this.setState({
@@ -19,21 +13,39 @@ class UserInfo extends React.Component {
         })
     }
 
+    handleOnChangeAgeInput(event) {
+        this.setState({
+            age: event.target.value
+        })
+    }
+
     handleOnSubmit(event) {
         event.preventDefault()
-        console.log(this.state)
+        this.props.onChangeListUser({
+            id: Math.floor((Math.random90 * 100) + 1) + '-random',
+            name: this.state.name,
+            age: this.state.age
+        })
     }
 
     render() {
         return (
             <div>
-                My name is {this.state.name} and Im from {this.state.address}
                 <form onSubmit={(event) => { this.handleOnSubmit(event) }}>
+                    My name is {this.state.name}
                     <input
                         value={this.state.name}
                         type="text"
                         onChange={(event) => {
                             this.handleOnChangeInput(event)
+                        }}
+                    />
+                    My age is {this.state.age}
+                    <input
+                        value={this.state.age}
+                        type="text"
+                        onChange={(event) => {
+                            this.handleOnChangeAgeInput(event)
                         }}
                     />
                     <button>Submit</button>
