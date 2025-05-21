@@ -7,16 +7,10 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 class App extends React.Component{
-  state = {
-    name : 'me',
-    address : 'earth',
-    age : 26
-  };
-
   render(){
     return (
       <div>
-        My name is {this.state.name} and Im from {this.state.address}
+        <MyComponent></MyComponent>
       </div>
     );
   }
