@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UserInfo from "./UserInfo";
 import './DisplayInfo.scss'
 import logo from './../logo.svg'
@@ -57,9 +57,19 @@ import logo from './../logo.svg'
 
 const DisplayInfo = (props) => {
     const { listUser } = props;
+
+    const [isShowHideListUser, setShowHideListUser] = useState(true)
+    const handleOnClick = () => {
+        setShowHideListUser(!isShowHideListUser)
+    }
+
     return (
         <div className='display-info-container'>
-            {true &&
+            <span onClick={() => handleOnClick()}>
+                {isShowHideListUser ? 'Hide list user' : 'Show list user'}
+            </span>
+
+            {isShowHideListUser &&
                 <>
                     {listUser.map((user) => {
                         return (
