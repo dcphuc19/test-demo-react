@@ -15,7 +15,18 @@ class DisplayInfo extends React.Component {
         )
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(prevProps.listUser, this.props.listUser)
+        if (prevProps.listUser !== this.props.listUser)
+            console.log('>>>call me did update')
+    }
+
+    componentDidMount() {
+        console.log('>>> call me component did mount')
+    }
+
     render() {
+        console.log('>>> render')
         const { listUser } = this.props;
         return (
 
