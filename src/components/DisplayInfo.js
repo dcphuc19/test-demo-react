@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserInfo from "./UserInfo";
 import './DisplayInfo.scss'
 import logo from './../logo.svg'
@@ -62,6 +62,15 @@ const DisplayInfo = (props) => {
     const handleOnClick = () => {
         setShowHideListUser(!isShowHideListUser)
     }
+
+    console.log("render")
+    useEffect(() => {
+        console.log("userEffect")
+        setTimeout(() => {
+            document.title = "Earth"
+        }, 3000);
+    }, [listUser])
+
 
     return (
         <div className='display-info-container'>
